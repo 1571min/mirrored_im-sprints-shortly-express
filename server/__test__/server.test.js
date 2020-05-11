@@ -150,6 +150,7 @@ describe('Bare Minimum Requirements', () => {
             'id',
             'email',
             'password',
+            'salt',
             'username',
             'updatedAt',
             'createdAt'
@@ -229,6 +230,7 @@ describe('Bare Minimum Requirements', () => {
                 'id',
                 'email',
                 'password',
+                'salt',
                 'username',
                 'updatedAt',
                 'createdAt'

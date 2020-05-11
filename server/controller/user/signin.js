@@ -1,4 +1,5 @@
 const { users } = require('../../models');
+var crypto = require('crypto');
 
 module.exports = {
   post: (req, res) => {
@@ -12,8 +13,7 @@ module.exports = {
       .then((data) => {
         if (data) {
           let secret = data.salt;
-          const hashed = crypto
-            .createHmac('sha256', secret)
+          const hashed = crypto.createHmac('sha256', secret)
             .update(req.body.password)
             .digest('hex');
           if (hashed === data.password) {
