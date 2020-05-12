@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { List, Shorten, Home, Login } from './pages';
+import { List, Shorten, Home, Login, Signup } from './pages';
 import Template from './components/Template';
 
 class App extends Component {
@@ -13,6 +13,7 @@ class App extends Component {
           <Route path="/list" component={List} />
           <Route path="/shorten" component={Shorten} />
           <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
         </Switch>
       </div>
     );

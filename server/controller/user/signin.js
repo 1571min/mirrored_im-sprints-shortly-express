@@ -15,23 +15,27 @@ module.exports = {
       .then((data) => {
         if (data) {
           let secret = data.salt;
-          const hashed = crypto.createHmac('sha256', secret)
+          const hashed = crypto
+            .createHmac('sha256', secret)
             .update(req.body.password)
             .digest('hex');
           if (hashed === data.password) {
             // req.session.user = data;
             // return res.status(200).json({ id: req.session.user.id });
-            const token = jwt.sign({
-              id: data.id,
-              email: data.email
-            }, process.env.JWT_PASSWORD, {
-              expiresIn: '1m'
+            const token = jwt.sign(
+              {
+                id: data.id,
+                email: data.email,
+              },
+              process.env.JWT_PASSWORD,
+              {
+                expiresIn: '1m',
+              }
+            );
+            return res.cookie('w_auth', token).status(200).json({
+              lcode: 200,
+              message: 'jwt 발급',
             });
-            return res.json({
-              code: 200,
-              message: "jwt 발급",
-              token
-            })
           } else {
             return res.status(404).send('unvalid user');
           }

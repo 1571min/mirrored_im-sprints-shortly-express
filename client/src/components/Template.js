@@ -28,6 +28,9 @@ class Template extends Component {
           <Link className="menu-item" to={'/shorten'}>
             Shorten
           </Link>
+          <Link className="menu-item" to={'/signup'}>
+            SignUp
+          </Link>
           {isLogin ? (
             <span
               className="menu-item"
@@ -50,10 +53,10 @@ class Template extends Component {
 }
 
 export default connect(
-  state => ({
-    isLogin: state.login.isLogin
+  (state) => ({
+    isLogin: state.login.isLogin,
   }),
-  dispatch => ({
-    LoginActions: bindActionCreators(loginActions, dispatch)
+  (dispatch) => ({
+    LoginActions: bindActionCreators(loginActions, dispatch),
   })
 )(Template);
